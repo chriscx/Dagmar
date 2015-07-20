@@ -1,0 +1,15 @@
+{
+  "name": "dagmar",
+  "version": "0.0.1",
+  "description": "",
+  "main": "crawl.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christopher Cailleaux",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "coffee-script": "^1.9.3"
+  }
+}
