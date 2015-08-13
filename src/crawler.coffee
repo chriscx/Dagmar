@@ -3,54 +3,44 @@ util = require 'util'
 request = require 'request'
 Queue = require './queue'
 
-Crawler = ->
-  ###
+class Crawler
+  constructor: ->
+    EventEmitter.call this
+    util.inherits this, EventEmitter
+    @_queue = new Queue()
+    @_callback = (error, response, body) ->
+      if !error and response.statusCode == 200
+        console.log body
+      else
+        console.log error
 
-  ###
-  @_queue = new Queue()
-  @_onSuccess = (body) ->
-    console.log body
-  @_onFailure = (error) ->
-    console.log error
-  EventEmitter.call this
-  return this
+  do: (callback) ->
+    ###
+    Callback to be executed when url has been requested
+    ###
+    @_callback = callback
+    return callback
 
-util.inherits Crawler, EventEmitter
+  queue: (url) ->
+    ###
+    Push an url in the queue to be crawled
+    ###
+    @_queue.push(url)
+    return url
 
-Crawler::onSuccess = (callback) ->
-  ###
+  crawl: (url, callback) ->
+    ###
+    Request url and manage results in callback
+    ###
+    request url, callback
 
-  ###
-  @_onSuccess = callback
+  start: ->
+    ###
 
-Crawler::onFailure = (callback) ->
-  ###
-
-  ###
-  @_onFailure = callback
-
-Crawler::queue = (url) ->
-  ###
-
-  ###
-  @_queue.push(url)
-
-Crawler::crawl = (url, onSuccess, onFailure) ->
-  ###
-
-  ###
-  request url, (error, response, body) ->
-    if !error and response.statusCode == 200
-      onSuccess(response, body)
-    else
-      onFailure(response, error)
-
-Crawler::start = ->
-  ###
-
-  ###
-  while @_queue.size > 0
-    this.crawl @_queue.pop, @_onSuccess, @_onFailure
+    ###
+    while @_queue.size > 0
+      url = @_queue.pop()
+      @.crawl url, @_callback
 
 
 module.exports = Crawler

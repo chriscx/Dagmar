@@ -2,31 +2,33 @@ should = require 'should'
 Crawler = require '../src/crawler'
 Queue = require '../src/queue'
 
+
 describe 'Crawler', ->
   describe 'init', ->
-    it 'should initialize a crawler object', ->
+    it 'should initialize a crawler object', (done) ->
       crawler = new Crawler()
       crawler._queue.should.be.instanceof(Queue)
+      done()
 
   describe 'crawl', ->
-    it 'should return -1 when the value is not present', ->
+    it 'should crawl url', (done) ->
       crawler = new Crawler()
-      crawler.crawl("http://www.google.com"
-        ,(res, body) ->
-          res.should.equal(200)
-        ,(res, error) ->
-          res.should.not.equal(200)
+      crawler.crawl('http://www.google.com', (error, response, body) ->
+        response.statusCode.should.equal(200)
+        done()
       )
 
   describe 'start', ->
-    it 'should return -1 when the value is not present', ->
+    it 'should crawl all urls in queue', (done) ->
       crawler = new Crawler()
-      crawler.onSuccess((res, body) ->
-        res.should.equal(200)
-      )
-      crawler.onFailure((res, error) ->
-        res.should.not.equal(200)
+      crawler.do((error, response, body) ->
+        response.statusCode.should.equal(200)
+        if crawler._queue.size == 0
+          done()
       )
       crawler.queue("http://www.google.com")
       crawler.queue("http://www.yahoo.com")
-      crawler.start
+      crawler.queue("http://www.apple.com")
+      crawler.queue("http://www.twitter.com")
+      crawler.queue("http://www.facebook.com")
+      crawler.start()
