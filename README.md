@@ -12,7 +12,7 @@ It features:
 
 ## How to install
 
-    $ npm install crawler
+    $ npm install dagmar
 
 ## Crash course
 
