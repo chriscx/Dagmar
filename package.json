@@ -1,8 +1,8 @@
 {
   "name": "dagmar",
   "version": "0.0.1",
-  "description": "",
-  "main": "crawl.coffee",
+  "description": "deadly simple crawling/scraping package for Node.",
+  "main": "./lib/crawler.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script/register tests/"
   },
@@ -15,6 +15,7 @@
     "sleep": "^3.0.0"
   },
   "devDependencies": {
+    "mocha": "^2.2.5",
     "mocha-lcov-reporter": "0.0.2",
     "should": "^7.0.3"
   }

@@ -1,5 +1,12 @@
 language: node_js
 node_js:
-  - "0.12"
-  - "0.11"
-  - "0.10"
+- '0.12'
+- '0.11'
+- '0.10'
+deploy:
+  provider: npm
+  email: christopher.cailleaux@gmail.com
+  api_key:
+    secure: MBWChGGpdGLRhXKc1C22tF2qlhbkt5Pm7VJAC6xV2opiqLpNyoikBDuI8wMR/cOJSDLCtAKe4FNT6MCm+9WYEACvffA9/p/n1JSk5n9rKuUUJkFGG78+Q6hAKxsrLjEm0n6gyWZX4qIvGvatOB9FWeXiW4m2b75kThcZyKWL4bIV+Tj1sT7KouWHILoocRkbo1mL+mt78wHi+q2Vf4hepG1ai2CmsyLlApyqGt/eJ1s/0bOUF68uubGiyY64e2wbtX0e5gKKGGom5aaf+o/B6Ai2iwk5ktiogJ1SpgoDEHJjBbZKKNHm/953pBMzMuqfCN8NppZDDEO3XVzWZ57aW5rPvVkbHJbsZNBNnKz0ELdhnM1BPg6nzAvKQOEZgQM3Z3gHuvrmOOyVAW/yKe2IbOJNPcWApIbn8+youxwHCoCNzU5Xz9gMK8wiLiNtIAbtTnHU+B74O4bTOR9wMxmF6HUP1D3+R2V3m3DCQ7e+nBbu/Lv+szD1WeN0UnnILQ3kdYqEKCh0M8dPUj6/IFL3Nw61LT08MHrYMsmQ+4wI4jWOTYM2PzBZ3tFdxsQsCGJBz5z14QTFgeNETyWyzk9EdO/b78JldGmhuqxsUl1aCpZqf/Z+//BCc012szoqu1xJUWOxvEzEgPOFcKSq05IJIRIJDmcFXduYAi6LaZGzkZs=
+  on:
+    tags: true
