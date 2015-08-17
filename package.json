@@ -15,6 +15,7 @@
     "sleep": "^3.0.0"
   },
   "devDependencies": {
+    "mocha": "^2.2.5",
     "mocha-lcov-reporter": "0.0.2",
     "should": "^7.0.3"
   }
