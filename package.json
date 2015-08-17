@@ -1,0 +1,21 @@
+{
+  "name": "dagmar",
+  "version": "0.0.1",
+  "description": "",
+  "main": "crawl.coffee",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script/register tests/"
+  },
+  "author": "Christopher Cailleaux",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "coffee-script": "^1.9.3",
+    "request": "^2.60.0",
+    "sleep": "^3.0.0"
+  },
+  "devDependencies": {
+    "mocha-lcov-reporter": "0.0.2",
+    "should": "^7.0.3"
+  }
+}
