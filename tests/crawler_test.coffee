@@ -25,6 +25,7 @@ describe 'Crawler', ->
         response.statusCode.should.equal(200)
         if crawler._queue.size == 0
           done()
+        crawler.next()
       )
       crawler.queue("http://www.google.com")
       crawler.queue("http://www.yahoo.com")
