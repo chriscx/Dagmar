@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/chriscx/Dagmar.svg)](https://travis-ci.org/chriscx/Dagmar)
+[![Dependency Status](https://david-dm.org/chriscx/dagmar.svg)](https://david-dm.org/chriscx/dagmar)
+[![devDependency Status](https://david-dm.org/chriscx/dagmar/dev-status.svg)](https://david-dm.org/chriscx/dagmar#info=devDependencies)
 # Dagmar
 
 Dagmar is a deadly simple crawling/scraping package for Node.
