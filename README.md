@@ -8,7 +8,7 @@ Dagmar is a deadly simple crawling/scraping package for Node.
 It features:
  * A clean, simple API
  * Possible use of server-side DOM & automatic jQuery insertion with Cheerio
- * node 0.10 and 0.12 support
+ * node 0.10+ support
 
 ## How to install
 
