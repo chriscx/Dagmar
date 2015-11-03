@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "mocha": "^2.2.5",
-    "mocha-lcov-reporter": "0.0.2",
+    "mocha-lcov-reporter": "1.0.0",
     "should": "^7.0.3"
   }
 }
