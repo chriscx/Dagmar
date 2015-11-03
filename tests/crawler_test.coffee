@@ -13,20 +13,20 @@ describe 'Crawler', ->
   describe 'crawl', ->
     it 'should crawl url', (done) ->
       crawler = new Crawler()
-      crawler.crawl('http://www.google.com', (error, response, body) ->
+      crawler.forEach (error, response, body) ->
         response.statusCode.should.equal(200)
         done()
-      )
+
+      crawler.crawl 'http://www.google.com'
 
   describe 'start', ->
     it 'should crawl all urls in queue', (done) ->
-      crawler = new Crawler()
-      crawler.do((error, response, body) ->
+      crawler = new Crawler(1000, 10)
+      crawler.forEach (error, response, body) ->
         response.statusCode.should.equal(200)
-        if crawler._queue.size == 0
-          done()
-        crawler.next()
-      )
+      crawler.end ->
+        done()
+
       crawler.queue("http://www.google.com")
       crawler.queue("http://www.yahoo.com")
       crawler.queue("http://www.apple.com")

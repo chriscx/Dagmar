@@ -16,66 +16,81 @@ It features:
 
 ## Crash course
 
-```coffeescript
+```javascript
 
-crawler = new Crawler()
+var crawler = new Crawler();
 
-crawler.do((error, response, body) ->
-  if error or response.statusCode != 200
-    console.log error
-  else
-      crawler.next()
-)
+crawler.forEach(function(error, response, body) {
+  if (error || response.statusCode !== 200) {
+    console.log(error);
+  } else {
+    console.log(body);
+  }
+});
 
-crawler.queue("http://www.google.com")
-crawler.queue("http://www.yahoo.com")
-crawler.queue("http://www.apple.com")
-crawler.queue("http://www.twitter.com")
-crawler.queue("http://www.facebook.com")
+crawler.end(function() {
+  console.log('Done.');
+});
 
-crawler.start()
+crawler.queue("http://www.google.com");
+crawler.queue("http://www.yahoo.com");
+crawler.queue("http://www.apple.com");
+crawler.queue("http://www.twitter.com");
+crawler.queue("http://www.facebook.com");
+
+crawler.start();
 
 ```
 
 ## Using Cheerio
 
-```coffeescript
+```javascript
 
-crawler = new Crawler()
+var crawler = new Crawler();
 
-crawler.do((error, response, body) ->
-  if !error and response.statusCode == 200
-    $ = cheerio.load body
-    list = $ 'ul', '<ul id="fruits">...</ul>'
-    console.log list
-  else
-    console.log error
-  crawler.next()
-)
+crawler.foreach(function(error, response, body) {
+  var $, list;
+  if (!error && response.statusCode === 200) {
+    $ = cheerio.load(body);
+    list = $('ul', '<ul id="fruits">...</ul>');
+    console.log(list);
+  } else {
+    console.log(error);
+  }
+});
 
-crawler.queue("http://www.fruits.org")
+crawler.end(function() {
+  console.log('Done.');
+});
 
-crawler.start()
+crawler.queue("http://www.fruits.org");
+
+crawler.start();
 
 ```
 
 ## Full crawler retrieving href and adding to queue
 
-```coffeescript
-crawler = new Crawler()
+```javascript
+var crawler = new Crawler();
 
-crawler.do((error, response, body) ->
-  if !error and response.statusCode == 200
-    $ = cheerio.load body
-    $('a').each (index, a) ->
-      url = $(a).attr('href')
-      crawler.queue url
-  else
-    console.log error
-  crawler.next()
-)
+crawler.forEach(function(error, response, body) {
+  if (!error && response.statusCode === 200) {
+    var $ = cheerio.load(body);
+    return $('a').each(function(index, a) {
+      var url = $(a).attr('href');
+      crawler.queue(url);
+    });
+  } else {
+    console.log(error);
+  }
+});
 
-crawler.queue("http://www.fruits.org")
+crawler.end(function() {
+  console.log('Done.');
+});
 
-crawler.start()
+crawler.queue("http://www.fruits.org");
+
+crawler.start();
 ```
