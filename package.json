@@ -1,6 +1,6 @@
 {
   "name": "dagmar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "deadly simple crawling/scraping package for Node.",
   "main": "./lib/crawler.js",
   "scripts": {
