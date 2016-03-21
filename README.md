@@ -48,7 +48,7 @@ crawler.start();
 
 var crawler = new Crawler();
 
-crawler.foreach(function(error, response, body) {
+crawler.forEach(function(error, response, body) {
   var $, list;
   if (!error && response.statusCode === 200) {
     $ = cheerio.load(body);
